@@ -18,3 +18,9 @@ mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   type-aliases-package: com.xx.fastadmin.mapper
+
+  # PageHelper分页插件
+  pagehelper:
+    helperDialect: mysql
+    supportMethodsArguments: true
+    params: count=countSql 

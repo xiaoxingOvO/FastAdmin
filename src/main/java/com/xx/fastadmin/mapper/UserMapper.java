@@ -2,7 +2,10 @@ package com.xx.fastadmin.mapper;
 
 import com.xx.fastadmin.domain.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.xx.fastadmin.domain.query.UserQuery;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 /**
 * @author xiaoxing
@@ -12,6 +15,13 @@ import org.apache.ibatis.annotations.Mapper;
 */
 @Mapper
 public interface UserMapper extends BaseMapper<User> {
+
+    /**
+     * 根据条件分页查询用户列表
+     * @param user
+     * @return
+     */
+    List<User> selectUserList(UserQuery userQuery);
 
 }
 
