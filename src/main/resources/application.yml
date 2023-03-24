@@ -1,0 +1,20 @@
+server:
+  port: 8082
+  servlet:
+    context-path: /fastadmin
+spring:
+  profiles:
+    active: dev
+  application:
+    name: fastadmin
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+logging:
+  level:
+    com.xx: DEBUG
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  type-aliases-package: com.xx.fastadmin.mapper
