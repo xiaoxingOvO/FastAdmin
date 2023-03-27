@@ -25,61 +25,59 @@ public class UserController {
 
     /**
      * 根据条件分页查询用户列表
-     * @param userQuery
-     * @return
+     * @param userQuery 用户查询参数
+     * @return 用户列表
      */
     @ApiOperation("根据条件分页查询用户列表")
     @PostMapping("/list")
-    public ResponseEntity<PageInfo<User>> queryUsers(@RequestBody UserQuery userQuery){
+    public ResponseEntity<Object> queryUsers(@RequestBody UserQuery userQuery){
         PageInfo<User> pageInfo = userService.selectUserList(userQuery);
         return ResponseEntity.ok().body(pageInfo);
     }
 
     /**
      * 根据id查询详情
-     * @param id
-     * @return
+     * @param id 用户id
+     * @return 用户详情
      */
     @ApiOperation("根据id查询详情")
     @GetMapping("/{id}")
-    public ResponseEntity detailUser(@PathVariable("id") Long id){
+    public ResponseEntity<Object> detailUser(@PathVariable("id") Long id){
         User user = userService.selectById(id);
         return ResponseEntity.ok().body(user);
     }
 
     /**
      * 根据id批量删除
-     * @param ids
-     * @return
+     * @param ids 用户ids
+     * @return 返回成功信息
      */
-    @DeleteMapping("/batch{id}")
-    public ResponseEntity deleteUsers(@RequestBody List<Long> ids){
-        String s = userService.deleteUsers(ids);
-
-        return null;
+    @DeleteMapping("/batch")
+    public ResponseEntity<Object> deleteUsers(@RequestBody List<Long> ids){
+        userService.deleteUsers(ids);
+        return ResponseEntity.ok().body("删除成功");
     }
 
     /**
      * 新增用户
-     * @param user
-     * @return
+     * @param user 用户对象
+     * @return 返回成功信息
      */
     @PostMapping("")
-    public ResponseEntity createUser(@RequestBody User user){
-        String s = userService.createUser(user);
-        return null;
+    public ResponseEntity<Object> createUser(@RequestBody User user){
+        userService.createUser(user);
+        return ResponseEntity.ok().body("新增成功");
     }
 
     /**
      * 更新用户
-     * @param id
-     * @param user
-     * @return
+     * @param user 用户对象
+     * @return 返回成功信息
      */
-    @PutMapping("/{id}")
-    public ResponseEntity updateUser(@PathVariable("id") Long id,@RequestBody User user){
-        String s = userService.updateUser(user);
-        return null;
+    @PutMapping("/")
+    public ResponseEntity<Object> updateUser(@RequestBody User user){
+        userService.updateUser(user);
+        return ResponseEntity.ok().body("更新成功");
     }
 
 
