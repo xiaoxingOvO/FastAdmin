@@ -4,7 +4,7 @@ package com.xx.fastadmin.domain.query;
  * @author xx
  * @date 2023/3/24
  */
-public class UserQuery {
+public class UserQuery extends PageQuery{
 
     private String userId;
     private String userName;
@@ -14,6 +14,7 @@ public class UserQuery {
     private String endTime;
 
     public UserQuery(String userId, String userName, String status, String phonenumber, String beginTime, String endTime) {
+        super();
         this.userId = userId;
         this.userName = userName;
         this.status = status;

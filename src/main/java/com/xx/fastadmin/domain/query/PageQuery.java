@@ -1,7 +1,6 @@
 package com.xx.fastadmin.domain.query;
 
-
-import org.apache.commons.lang3.StringUtils;
+import com.xx.fastadmin.util.StringUtils;
 
 /**
  * @author xx
@@ -21,6 +20,10 @@ public class PageQuery {
     /** 排序的方向desc或者asc */
     private String isAsc = "asc";
 
+    public PageQuery() {
+
+    }
+
     public PageQuery(Integer pageNum, Integer pageSize, String orderByColumn, String isAsc) {
         this.pageNum = pageNum;
         this.pageSize = pageSize;
@@ -28,14 +31,13 @@ public class PageQuery {
         this.isAsc = isAsc;
     }
 
-
     public String getOrderBy()
     {
         if (StringUtils.isEmpty(orderByColumn))
         {
             return "";
         }
-        return orderByColumn + " " + isAsc;
+        return StringUtils.toUnderScoreCase(orderByColumn) + " " + isAsc;
     }
 
     public Integer getPageNum() {
